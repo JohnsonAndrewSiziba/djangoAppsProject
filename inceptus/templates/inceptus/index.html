@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+<title>Inceptus</title>
+{% endblock title %}
+
+{% block style %}
+    <link href="{% static 'inceptus/searchBar.css' %}" rel="stylesheet">
+{% endblock style %}
+
+{% block content %}
+       <div class="container-fluid">
+            <div class="p-5 text-center bg-white">
+                <p class="text-center">
+                    <img class="wow fadeInDown" src="{% static 'inceptus/img/cover.png' %}" style="width: 45%" alt="">
+                </p>
+
+                <form class="wrap" action="{% url 'inceptus:query' %}" method="get" style="display: inline-block">
+                    {% csrf_token %}
+                   <div class="search">
+                      <input type="text" class="searchTerm  wow fadeIn" name="query" placeholder="" autofocus>
+                      <button type="submit" class="searchButton  wow fadeInRight">
+                        <i class="fa fa-search"></i>
+                     </button>
+                   </div>
+                </form>
+            </div>
+       </div>
+
+{% endblock content %}
+
+
+
+

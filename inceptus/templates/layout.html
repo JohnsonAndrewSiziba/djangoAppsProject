@@ -1,0 +1,51 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+{#      <link rel="stylesheet" href="{% static 'inceptus/bootstrap/css/bootstrap.min.css' %}">#}
+
+      <!-- Bootstrap core CSS -->
+      <link href="{% static 'inceptus/mdb/css/bootstrap.min.css' %}" rel="stylesheet">
+      <!-- Material Design Bootstrap -->
+      <link href="{% static 'inceptus/mdb/css/mdb.min.css' %}" rel="stylesheet">
+      <!-- Your custom styles (optional) -->
+        {% block title %}
+
+        {% endblock title %}
+
+      {% block style %}
+
+      {% endblock style %}
+      <link href="{% static 'inceptus/style.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+  {% block content %}
+
+  {% endblock content %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'inceptus/mdb/js/jquery.min.js' %}"></script>
+    <script src="{% static 'inceptus/popper.min.js' %}"></script>
+    <script src="{% static 'inceptus/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'inceptus/mdb/js/bootstrap.min.js' %}"></script>
+      <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'inceptus/mdb/js/mdb.min.js' %}"></script>
+
+  <script>
+      $( document ).ready(function() {
+          new WOW().init();
+      });
+  </script>
+
+  </body>
+</html>

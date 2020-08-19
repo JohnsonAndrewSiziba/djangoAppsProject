@@ -7,7 +7,24 @@ from library.search_engine.SearchEngine import SearchEngine
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return render(request, 'inceptus/index.html')
+
+
+def query(request):
+    q = request.GET.get('query', None)
+    searchEngine = SearchEngine(q)
+    data = searchEngine.searchResults
+    return render(request, 'inceptus/results.html', {'data': data})
+
+
+def results(request):
+    q = request.GET['query']
+    print("iiiiiiiiiiiiiiiiiiiiiiiiiiii")
+    print(q)
+    print("iiiiiiiiiiiiiiiiiiiiiiiiiiii")
+    # searchEngine = SearchEngine("The Umbrella Academy")
+    # data = searchEngine.searchResults
+    return render(request, 'inceptus/index.html')
 
 
 def search(request):
