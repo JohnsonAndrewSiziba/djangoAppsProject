@@ -1,0 +1,35 @@
+.wow {
+  visibility: hidden;
+}
+
+.bg {
+    background: #395ECA;
+}
+
+.result-1 {
+    border-radius: 4px;
+    background: #fff;
+}
+
+
+body {
+    color: #202122;
+    font-family: 'Montserrat', sans-serif;
+}
+.extract {
+    color: #494949;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 85%;
+    line-height: 1.45;
+    margin: 0 0 0.2em;
+    font-weight: 400
+}
+
+h4 {
+    font-family: 'Noto Serif', serif;
+    font-size: 90%;
+}
+
+.result-1:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
