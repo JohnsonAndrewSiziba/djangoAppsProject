@@ -28,7 +28,7 @@
       <a class="navbar-brand" href="#">
           <img class="wow fadeIn" src="{% static 'inceptus/img/inspectus.png' %}" style="width: 100px;" alt="">
       </a>
-      <form class="wrap" action="{% url 'inceptus:query' %}" method="get" style="display: inline-block; width: 40%">
+      <form class="wrap" action="{% url 'inceptus:query' %}" method="get" style="display: inline-block; width: 50%">
           {% csrf_token %}
        <div class="search">
           <input type="text" class="searchTerm  wow fadeIn" name="query" placeholder="" value="{{ query }}" autofocus>
