@@ -1,9 +1,11 @@
 import json
 
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.urls import reverse
 
 from library.search_engine.SearchEngine import SearchEngine
+from library.search_engine.SearchResult import SearchResult
 
 
 def index(request):
@@ -14,7 +16,11 @@ def query(request):
     q = request.GET.get('query', None)
     searchEngine = SearchEngine(q)
     data = searchEngine.searchResults
-    return render(request, 'inceptus/results.html', {'data': data})
+    # one = SearchResult("Ariana Grande - Wikipedia", "http://www.wikipedia.org", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aspernatur illo")
+    # two = SearchResult("Ariana Grande - Wikipedia", "http://www.wikipedia.org", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aspernatur illo")
+    # data = [one, two, one, one, one, one, one, two, one, one, one, one]
+    return render(request, 'inceptus/results.html', {'data': data, 'query': q})
+    # return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 
 def results(request):

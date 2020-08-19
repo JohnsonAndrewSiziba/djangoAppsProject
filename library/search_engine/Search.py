@@ -9,6 +9,7 @@ class Search:
     linksCollection = []
 
     def __init__(self, query):
+        self.results = []
         self.query = query
         self.searchLink = self.generateSearchLink()
         print(self.searchLink)

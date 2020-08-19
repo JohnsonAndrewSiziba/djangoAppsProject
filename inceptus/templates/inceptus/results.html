@@ -5,9 +5,7 @@
     <link href="{% static 'inceptus/searchBar.css' %}" rel="stylesheet">
     <style>
         body {
-            {#background: #eef5f5;#}
-            {#background: linear-gradient(180deg, #eef5f5, #191ba9)#}
-          background-image: linear-gradient(to right, #eef5f5, #f5fafa);
+          background: linear-gradient(to right, #eef5f5, #f5fafa);
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -30,9 +28,10 @@
       <a class="navbar-brand" href="#">
           <img class="wow fadeIn" src="{% static 'inceptus/img/inspectus.png' %}" style="width: 100px;" alt="">
       </a>
-      <form class="wrap" action="" style="display: inline-block; width: 40%">
+      <form class="wrap" action="{% url 'inceptus:query' %}" method="get" style="display: inline-block; width: 40%">
+          {% csrf_token %}
        <div class="search">
-          <input type="text" class="searchTerm  wow fadeIn" name="query" placeholder="" autofocus>
+          <input type="text" class="searchTerm  wow fadeIn" name="query" placeholder="" value="{{ query }}" autofocus>
           <button type="submit" class="searchButton  wow fadeIn">
             <i class="fa fa-search"></i>
          </button>
@@ -91,22 +90,27 @@
         <div class="row">
             <div class="col-md-7 pr-3">
                 {% for searchResult in data %}
-                <div class="result">
-                    <div class="p-3 result-1">
-                        <h4 style="color: #4532ce">{{ searchResult.title }}</h4>
+                <div class="result mb-3 wow slideInUp">
+                    <div class="p-3 result-1 wow">
+                        <h4 style="color: #4532ce" class="wow slideInDown">{{ searchResult.title }}</h4>
                         <!-- Link icon by Icons8 -->
+                        <div class="d-flex">
 <img class="icon icons8-Link" style="width: 20px; height: 20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACc0lEQVRoQ+1YPWzTQBT+nlMJVcmKmoQiMVAkKuwWwVJGYGxGKhTUjvyKjTgd2FhKwoZUfkYqKgRbYUKUpYAYqGgd1AxFgqFNWrE2lRDED6XIbgKW6/TOoUbnzef33ve97zvfnU2I+EUR5w/VwL92UDmgHBBUQE0hQQGF05UDwhIKFlAOCAoonO7pwOHry/tq3bUR4pjBGgwwDwDocdAYqIBonsCLVEf5x6Y2823y2EY7bGRh/NVAb26pr679nATjbHBCtECEa5Xb+rsgOTIxWhroyZWGNeLnQUh4x9CVakG/75cvG8NtIGWWLgN8b/fkf2faTJn1ov7Cq04YGFsNpPOlU8z81gP0IWC/YY3n1iaOf3WeHzAXe+tMQ0SUAXj0z7wYdx1ZKfYvN4+HhUH7r35KdCV4DuDBFiIaTlYnjPmdHEnmrHNEeNoSR3gV3+we/ny373tjPEwMSt+wsqzhcTMBZoysFY1nO5F3nqfGrROw8aE13h6rFganthwOEYNSeesWGDe3wWmqWtDHgpJ3mzCtBwAuOvfEdKdS1HON+zAxKJkvzRBzxl3jA6h/ZnrDYNATMI6226hnPKFM4POz2YTlVy9lLowC2iM3huglJU1rlYC0M6iBD64WBlb8Cp2eri1JI+9ahvLrbLzfDzc5/vEQ2bEvTTHre6YBAt7PXogPtd/AHphCDfIgvrSrKRTmC9aRlzjMJa4jy2iYm0xHNrLIHyW2N6IIH+acJmQfdb2WRNkY/9cHjaOYrM89v01JFob6KyHlMCdQRDkgIJ6UVOWAFBkFiigHBMSTkqockCKjQBHlgIB4UlKVA1JkFCgSeQd+Acqx5UKvfJ02AAAAAElFTkSuQmCC" width="48" height="48">
+                            <span class="ml-1">
+                                <a style="color: #20692b; text-decoration: none" href="{{ searchResult.link }}">{{ searchResult.link }}</a>
+                            </span>
+                        </div>
                         <p class="extract">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aspernatur illo iusto nihil obcaecati quaerat reprehenderit sint ut. Beatae incidunt laborum molestias numquam omnis quis sapiente tempora. Itaque, reiciendis.
+                           {{ searchResult.extract }}
                         </p>
                     </div>
                 </div>
                 {% endfor %}
             </div>
 
-            <div class="col-md-5 pl-3">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus commodi dicta dignissimos doloremque est harum ipsa labore laborum nisi obcaecati? Delectus doloribus, fugiat laborum minus ratione tempore totam veritatis. Distinctio.
-            </div>
+{#            <div class="col-md-5 pl-3">#}
+{#                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus commodi dicta dignissimos doloremque est harum ipsa labore laborum nisi obcaecati? Delectus doloribus, fugiat laborum minus ratione tempore totam veritatis. Distinctio.#}
+{#            </div>#}
         </div>
     </div>
 </div>

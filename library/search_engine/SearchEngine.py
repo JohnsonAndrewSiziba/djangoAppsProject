@@ -7,14 +7,14 @@ class SearchEngine:
     tempResults = []
     googleResults = []
     bingResults = []
-    query = []
+    query = ""
 
     def __init__(self, query):
         self.query = query
         self.googleResults = Google(query, 0).results
         self.bingResults = Bing(query, 0).results
         self.searchResults = self.compileResults()
-        # print(len(self.compileResults()))
+        print(len(self.compileResults()))
 
     def compileResults(self):
         temp = []
